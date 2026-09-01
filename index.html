@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Muzammil Ayaz Kabeer — Applied AI Engineer</title>
+<meta name="description" content="Applied AI engineer in Chennai. I build engines that decide: adaptive assessment ladders, LLM agent orchestration, and the infrastructure underneath.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0b1120;
+  --ink-deep:#111827;
+  --paper:#F9FAFB;
+  --dim:#A7B0BE;
+  --signal:#F59E0B;
+  --reject:#EF4444;
+  --pass:#10B981;
+  --rule:rgba(255,255,255,0.1);
+
+  --display:"Newsreader",Georgia,serif;
+  --sans:"Public Sans",system-ui,sans-serif;
+
+  /* one measure, used everywhere prose runs full width */
+  --measure:64ch;
+  --gap:clamp(2rem,4vw,3.25rem);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--ink);color:var(--paper);
+  font-family:var(--sans);font-weight:400;
+  font-size:clamp(16.5px,.35vw + 15.5px,18.5px);
+  line-height:1.66;letter-spacing:.002em;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ---- type scale ---- */
+h1,h2,h3,h4{font-family:var(--display);font-weight:500;margin:0;line-height:1.08;letter-spacing:-.015em}
+h1{font-size:clamp(3rem,6.2vw,4.75rem);color:var(--paper)}
+h2{font-size:clamp(2rem,3.6vw,2.9rem);color:var(--signal);margin-bottom:.6rem}
+h3{font-size:clamp(1.3rem,1.7vw,1.55rem);color:var(--paper);line-height:1.2}
+p{margin:0 0 1.15rem;color:var(--dim);max-width:var(--measure)}
+p:last-child{margin-bottom:0}
+em{font-family:var(--display);font-style:italic;font-size:1.05em;color:var(--paper)}
+a{color:var(--signal);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .3s}
+a:hover{border-bottom-color:var(--signal)}
+a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--signal);outline-offset:3px}
+
+/* ---- structure: one column width, shared right edge ---- */
+.wrap{width:min(940px,90vw);margin:0 auto;padding-bottom:clamp(3rem,7vh,5rem)}
+.section-block{padding:clamp(3.5rem,8vh,5.5rem) 0;border-bottom:1px solid var(--rule)}
+.hero{padding:clamp(5rem,13vh,8.5rem) 0 clamp(3.5rem,8vh,5.5rem);border-bottom:none}
+.hero h1{max-width:18ch}
+.hero-role{font-family:var(--display);font-size:clamp(1.2rem,1.9vw,1.5rem);color:var(--signal);margin-top:1.1rem;font-weight:400}
+.hero-sub{font-size:1.12em;margin-top:1.4rem;max-width:52ch}
+.hero-cta{display:inline-block;margin-top:2.2rem;padding:.7rem 1.4rem;background:var(--signal);color:var(--ink);border-radius:4px;font-weight:600;font-size:.95rem;font-family:var(--sans);letter-spacing:.01em}
+.hero-cta:hover{background:#d97706;border-color:transparent}
+
+/* ---- project grid: inside a column, prose fills the column ---- */
+.project-grid{display:grid;grid-template-columns:1fr;gap:var(--gap);margin-top:clamp(2rem,4vw,3rem)}
+@media(min-width:820px){.project-grid{grid-template-columns:1fr 1fr;align-items:start}}
+.project-grid p,.panel p,.metric-card p,.timeline p{max-width:none}
+.col > * + *{margin-top:1.15rem}
+.col h3{margin-bottom:.15rem}
+
+/* ---- panels ---- */
+.panel{background:var(--ink-deep);border:1px solid var(--rule);border-radius:8px;padding:1.4rem 1.4rem 1.5rem;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+.phead{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;margin-bottom:1.35rem;font-size:.98rem;border-bottom:1px solid var(--rule);padding-bottom:.6rem}
+.phead span:first-child{color:var(--paper);font-weight:600;letter-spacing:.005em}
+.phead .s{color:var(--signal);font-size:.85rem;font-variant-numeric:tabular-nums;flex:none}
+
+button{
+  font-family:var(--sans);font-size:.92rem;font-weight:600;letter-spacing:.01em;
+  background:rgba(245,158,11,.1);color:var(--signal);
+  border:1px solid var(--signal);border-radius:4px;padding:.62rem 1.2rem;cursor:pointer;
+  transition:background .25s,color .25s;width:100%;margin-top:1.1rem;
+}
+button:hover{background:var(--signal);color:var(--ink)}
+
+/* ---- ladder & gates ---- */
+.ladder{display:flex;flex-direction:column-reverse;gap:4px}
+.rung{display:flex;justify-content:space-between;padding:.52rem .75rem;font-size:.92rem;background:rgba(255,255,255,.02);border-radius:4px;transition:background .4s,color .4s}
+.rung span:first-child{font-weight:500;font-variant-numeric:tabular-nums}
+.rung span:last-child{color:var(--dim);font-size:.86rem}
+.rung.on{background:rgba(245,158,11,.15);color:var(--signal);font-weight:500}
+.rung.on span:last-child{color:rgba(245,158,11,.8)}
+.rung.done{color:var(--pass)}
+.gates{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-top:1.35rem}
+.gate{font-size:.86rem;padding:.42rem;text-align:center;border:1px solid var(--rule);border-radius:4px;color:var(--dim);font-variant-numeric:tabular-nums;transition:border-color .3s,color .3s,background .3s}
+.gate.ok{border-color:var(--pass);color:var(--pass);background:rgba(16,185,129,.1)}
+.gate.no{border-color:var(--reject);color:var(--reject);background:rgba(239,68,68,.1)}
+.readout{margin-top:1.35rem;padding:.9rem 1rem;background:rgba(0,0,0,.2);border-radius:4px;font-size:.92rem;line-height:1.55;color:var(--dim);min-height:5.4em}
+.readout b{color:var(--paper);font-weight:600}
+.readout b.up{color:var(--pass)}
+.readout b.down{color:var(--reject)}
+
+/* ---- negative rag ---- */
+.cands{display:grid;gap:.5rem;min-height:2.7rem}
+.cand{display:flex;align-items:center;gap:.7rem;padding:.58rem .7rem;font-size:.92rem;background:rgba(255,255,255,.03);border-radius:4px;opacity:0;transform:translateX(-6px);animation:slot .35s cubic-bezier(.2,.75,.2,1) forwards}
+@keyframes slot{to{opacity:1;transform:none}}
+.cand .sim{margin-left:auto;font-size:.82rem;color:var(--dim);font-variant-numeric:tabular-nums;flex:none}
+.cand.rej{border-left:3px solid var(--reject);opacity:.72}
+.cand.rej .txt{text-decoration:line-through}
+.cand.acc{border-left:3px solid var(--pass);color:var(--paper)}
+.pivot{padding:.68rem .7rem;font-size:.9rem;color:var(--ink);background:var(--signal);border-radius:4px;font-weight:600;margin-top:.5rem;opacity:0;animation:slot .35s forwards}
+
+/* ---- persona bands ---- */
+.bands{display:grid;gap:.5rem}
+.band{display:flex;gap:1rem;padding:.72rem .8rem;font-size:.92rem;line-height:1.5;background:rgba(255,255,255,.03);border-left:3px solid transparent;transition:border-color .25s,background .25s,color .25s}
+.band:hover,.band:focus-visible{border-left-color:var(--signal);background:rgba(245,158,11,.05)}
+.band .bn{font-weight:600;color:var(--dim);font-variant-numeric:tabular-nums;flex:none}
+.band:hover .bn,.band:focus-visible .bn{color:var(--signal)}
+.schema{
+  font-family:ui-monospace,"SF Mono",Menlo,monospace;
+  color:var(--dim);background:rgba(0,0,0,.3);padding:1rem;border-radius:4px;
+  font-size:.83rem;line-height:1.7;margin-top:1.1rem;overflow-x:auto;
+}
+
+/* ---- timeline: dot centred on the rule ---- */
+.timeline{border-left:2px solid var(--rule);padding-left:1.75rem;margin-top:clamp(2rem,4vw,2.75rem)}
+.timeline-item{position:relative;margin-bottom:2.1rem}
+.timeline-item:last-child{margin-bottom:0}
+.timeline-item::before{
+  content:'';position:absolute;left:calc(-1.75rem - 8px);top:.45rem;
+  width:12px;height:12px;border-radius:50%;background:var(--signal);border:2px solid var(--ink);
+}
+.timeline-date{font-size:.86rem;color:var(--signal);font-weight:600;margin-bottom:.3rem;font-variant-numeric:tabular-nums;letter-spacing:.01em}
+.timeline h3{margin-bottom:.4rem}
+.timeline p{font-size:.96rem}
+
+/* ---- stack cards ---- */
+.metrics-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.15rem;margin-top:clamp(1.5rem,3vw,2rem)}
+.metric-card{background:var(--ink-deep);padding:1.3rem;border-radius:8px;border:1px solid var(--rule)}
+.metric-card h4{color:var(--signal);margin:0 0 .5rem 0;font-size:1.18rem;font-weight:500}
+.metric-card p{font-size:.94rem;line-height:1.55}
+
+.contact-row{margin-top:2.2rem;display:flex;gap:1.6rem;flex-wrap:wrap;align-items:center}
+.contact-row .plain{color:var(--paper);font-weight:600;font-size:.96rem}
+
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.001s!important;animation-delay:0s!important;transition-duration:.001s!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+
+  <!-- Hero -->
+  <section class="section-block hero">
+    <h1>Muzammil Ayaz Kabeer</h1>
+    <p class="hero-role">Applied AI Engineer based in Chennai</p>
+    <p class="hero-sub">I build engines that decide. What a student should practice next. Whether a generated question is actually new. How a piece of code was logically constructed.</p>
+    <a href="#projects" class="hero-cta">Explore My Work &darr;</a>
+  </section>
+
+  <!-- LSRW -->
+  <section id="projects" class="section-block">
+    <h2>LSRW Language Lab</h2>
+    <p>A CEFR-aligned assessment engine handling hundreds of student sessions daily. I built the adaptive autopilot, and fixed a generator that had started repeating itself by giving it a memory of its own output.</p>
+
+    <div class="project-grid">
+      <div class="col">
+        <h3>1. The Adaptive Autopilot</h3>
+        <p>Averaging skill scores lets a strong reader hide a weak speaker. So reading, listening, writing and speaking each clear an independent threshold, and promotion waits on consistency across a rolling five-to-seven session window. Session length escalates on a separate loop, so students neither sprint past their level nor stall inside it.</p>
+        <p><em>Run a few sessions. The weakest skill decides every move.</em></p>
+      </div>
+      <div class="panel">
+        <div class="phead"><span>Live Autopilot Logic</span><span class="s" id="sess">Session 0</span></div>
+        <div class="ladder" id="ladder"></div>
+        <div class="gates" id="gates"></div>
+        <div class="readout" id="readout">Placed at B1 Standard. The day-one diagnostic scored above 75%, so A1 through B1 Quick get skipped entirely.</div>
+        <button id="run">Run a session</button>
+      </div>
+    </div>
+
+    <div class="project-grid" style="margin-top:clamp(3rem,7vw,5rem)">
+      <div class="panel">
+        <div class="phead"><span>Negative RAG Engine</span><span class="s">Reject &gt; cos 0.85</span></div>
+        <div class="cands" id="cands"></div>
+        <button id="gen">Generate a question</button>
+        <div class="readout" id="hint">Rejections are not discarded. They go back into the next prompt as negative context, so the model is shown its own failed attempts.</div>
+      </div>
+      <div class="col">
+        <h3>2. &ldquo;Negative RAG&rdquo;</h3>
+        <p>An LLM with no record of what it has already produced starts circling: different words, same ideas. Every output stays technically valid, which is why a basic uniqueness check never catches it. That is not a prompting problem, it is a missing memory layer.</p>
+        <p>So every accepted question is embedded and stored, and each new candidate is checked against the whole history. Anything at or above cosine 0.85 is rejected and pushed into LangGraph state as negative context for the next attempt. Three consecutive rejections trigger a density check, and a saturated topic gets abandoned outright.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- NeoEval -->
+  <section class="section-block">
+    <h2>NeoEval</h2>
+    <p>Test-case pass or fail tells you whether code works, not whether the student understood the problem. That signal thinned noticeably once students started coding with AI, and manual review does not scale past a few hundred submissions. So I built a classifier that grades the shape of the attempt.</p>
+
+    <div class="project-grid">
+      <div class="col">
+        <h3>Persona Classification</h3>
+        <p>Submissions sort into four auditable bands. The classifier returns a strict schema rather than prose, covering approach, execution and confidence, so any judgement can be inspected and argued with. Low-confidence cases route to a human instead of publishing quietly.</p>
+        <p>Evaluated with deepeval against a synthetic C++ dataset built with deliberate persona-subtype variation, to find where the band boundaries blur before real students did. Later extended to SQL and JDBC with repair-effort scoring.</p>
+        <p>Phase two moves upstream of the code entirely: typing dynamics out of ClickHouse become features for gradient-boosted models that separate original work from copied. Behaviour is considerably harder to fake than a final answer.</p>
+      </div>
+      <div class="panel">
+        <div class="phead"><span>Hover or tab through the bands</span></div>
+        <div class="bands" id="bands"></div>
+        <pre class="schema">{
+  "is_genuine_attempt": true,
+  "approach": "correct",
+  "execution": "minor_errors",
+  "why": "off-by-one on the upper bound",
+  "confidence": 0.86
+}</pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- Personal Brain -->
+  <section class="section-block">
+    <h2>Personal Brain (Graph RAG)</h2>
+    <p>Outside production systems, I have been building a personal knowledge base that retrieves over a graph rather than a flat vector index. Vector proximity finds passages that sound alike; a graph can answer why two things are connected.</p>
+    <p>Built on LangGraph workflows with Model Context Protocol servers, mapping relationships between concepts so retrieval can traverse them instead of ranking them.</p>
+  </section>
+
+  <!-- Experience & Stack -->
+  <section class="section-block">
+    <h2>Experience &amp; Stack</h2>
+
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <h4>Backend &amp; Orchestration</h4>
+        <p>FastAPI, Node.js, LangGraph, AutoGen/AG2, Celery, TaskIQ, Redis</p>
+      </div>
+      <div class="metric-card">
+        <h4>Data &amp; Infrastructure</h4>
+        <p>AWS (ECS, Fargate, ALB), Aurora PostgreSQL, pgvector, ClickHouse, Docker</p>
+      </div>
+      <div class="metric-card">
+        <h4>Evaluation &amp; ML</h4>
+        <p>deepeval, DSPy, LangFuse, Phoenix, LightGBM, XGBoost</p>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <p class="timeline-date">2024 &ndash; Present</p>
+        <h3>Senior Software Engineer, AI @ iamneo</h3>
+        <p>LSRW and NeoEval, above. Also an agent-orchestrated AI Copilot with intent-based routing across specialist agents, and a token-metered usage system with wallet management and real-time deduction across thousands of exam sessions. Runs on AWS ECS/Fargate behind an ALB, with Aurora PostgreSQL Serverless v2 and TaskIQ workers.</p>
+      </div>
+      <div class="timeline-item">
+        <p class="timeline-date">2021 &ndash; 2024</p>
+        <h3>Full Stack Developer @ VisAI Labs</h3>
+        <p>An Electron and Node.js desktop application for high-precision 3D object dimensioning, deployed across manufacturing sites. Bridged C++ measurement modules into Node through node-addon-api for sub-millisecond hardware communication, and moved measurement data off distributed machines over RabbitMQ.</p>
+      </div>
+      <div class="timeline-item">
+        <p class="timeline-date">2020 &ndash; 2021</p>
+        <h3>Programmer Analyst Trainee @ Cognizant</h3>
+        <p>Enterprise database applications, and a first look at how large systems are actually maintained.</p>
+      </div>
+      <div class="timeline-item">
+        <p class="timeline-date">2020</p>
+        <h3>B.Tech, Mechatronics &mdash; SRM Institute of Science and Technology</h3>
+        <p>79%. Reasonable preparation for systems that have to survive the physical world.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section-block" style="border-bottom:none">
+    <h2>Let's Talk</h2>
+    <p>Happy to discuss assessment engines, agent orchestration, or why your generator keeps repeating itself.</p>
+    <div class="contact-row">
+      <a href="mailto:muzammilayazz@gmail.com" class="hero-cta" style="margin-top:0">Email Me</a>
+      <a href="https://www.linkedin.com/in/muzammilayaz" target="_blank" rel="noopener" class="plain">LinkedIn</a>
+      <a href="resume.pdf" target="_blank" rel="noopener" class="plain">Download Resume (PDF)</a>
+    </div>
+  </section>
+
+</main>
+
+<script>
+(function(){
+  /* ---------- Autopilot ---------- */
+  var LEVELS=[['A1','Quick'],['A2','Quick'],['B1','Quick'],['B1','Standard'],
+              ['B2','Standard'],['B2','Deep'],['C1','Standard'],['C1','Deep'],['C2','Deep']];
+  var SKILLS=['Reading','Listening','Writing','Speaking'];
+  var ladder=document.getElementById('ladder'), gatesEl=document.getElementById('gates'),
+      out=document.getElementById('readout'), sessEl=document.getElementById('sess'), runBtn=document.getElementById('run');
+
+  LEVELS.forEach(function(l){
+    var r=document.createElement('div'); r.className='rung';
+    r.innerHTML='<span>'+l[0]+'</span><span>'+l[1]+'</span>';
+    ladder.appendChild(r);
+  });
+  var rungs=[].slice.call(ladder.children);
+
+  SKILLS.forEach(function(s){
+    var g=document.createElement('div'); g.className='gate'; g.textContent=s; gatesEl.appendChild(g);
+  });
+  var gates=[].slice.call(gatesEl.children);
+  var pos=3,session=0,streak=0;
+
+  function paint(){
+    rungs.forEach(function(r,i){
+      r.classList.toggle('on',i===pos);
+      r.classList.toggle('done',i<pos);
+    });
+    sessEl.textContent='Session '+session;
+  }
+
+  runBtn.addEventListener('click',function(){
+    session++;
+    var scores=SKILLS.map(function(){return Math.round(57+Math.random()*36)});
+    var weakest=Math.min.apply(null,scores);
+    var weak=SKILLS[scores.indexOf(weakest)];
+
+    gates.forEach(function(g,i){
+      g.textContent=SKILLS[i]+': '+scores[i]+'%';
+      g.classList.toggle('ok',scores[i]>=75);
+      g.classList.toggle('no',scores[i]<75);
+    });
+
+    if(weakest>=75){
+      streak++;
+      if(streak>=2&&pos<LEVELS.length-1){
+        pos++;streak=0;
+        out.innerHTML='<b class="up">Promoted.</b> All four skills cleared 75% across consecutive sessions, so the stage advances.';
+      }else{
+        out.innerHTML='<b>Clean session.</b> Every skill cleared, but the consistency window needs one more before promotion.';
+      }
+    }else if(weakest<62&&pos>0){
+      pos--;streak=0;
+      out.innerHTML='<b class="down">Demoted.</b> '+weak+' fell to '+weakest+'%. The engine steps down rather than letting the gap widen.';
+    }else{
+      streak=0;
+      out.innerHTML='<b>Holding.</b> '+weak+' at '+weakest+'% is short of the gate, so this stage repeats. The other three scores are irrelevant here.';
+    }
+    paint();
+  });
+  paint();
+
+  /* ---------- Negative RAG ---------- */
+  var POOL=[['Should city centres ban private cars?',0.91],['Are car-free city centres a good idea?',0.88],
+            ['Urban traffic and limits on private vehicles',0.86],['Do museums still matter to young people?',0.31],
+            ['Is remote work reshaping small towns?',0.27]];
+  var candsEl=document.getElementById('cands'), genBtn=document.getElementById('gen'), hint=document.getElementById('hint');
+  var i=0,rejects=0;
+  var HINT0='Rejections are not discarded. They go back into the next prompt as negative context, so the model is shown its own failed attempts.';
+
+  genBtn.addEventListener('click',function(){
+    if(i>=POOL.length){
+      candsEl.innerHTML='';i=0;rejects=0;
+      hint.innerHTML=HINT0; genBtn.textContent='Generate a question'; return;
+    }
+    var c=POOL[i],rej=c[1]>=0.85;
+    var row=document.createElement('div'); row.className='cand '+(rej?'rej':'acc');
+    row.innerHTML='<span class="txt">'+c[0]+'</span><span class="sim">cos '+c[1].toFixed(2)+'</span>';
+    candsEl.appendChild(row);
+
+    if(rej){
+      rejects++;
+      hint.innerHTML='<b>Too close</b> to something already stored. This idea becomes negative context for the next call.';
+      if(rejects===3){
+        var p=document.createElement('div'); p.className='pivot';
+        p.textContent='Three consecutive rejections. The density check says this topic is exhausted, so the agent pivots.';
+        candsEl.appendChild(p);
+        hint.innerHTML='<b>Saturated.</b> Rather than keep grinding at the same topic, the agent abandons it. Watch what comes out next.';
+      }
+    }else{
+      rejects=0;
+      hint.innerHTML='<b>Far enough</b> from everything stored. Accepted, embedded, and now part of what the next candidate gets measured against.';
+    }
+    i++;
+    if(i>=POOL.length)genBtn.textContent='Reset';
+  });
+
+  /* ---------- Persona Bands ---------- */
+  var BANDS=[['01','Non-attempt','Nothing meaningful submitted. Worth separating from a wrong answer, because it means something different.'],
+             ['02','Wrong approach','Real effort, wrong mental model. This is the band that needs teaching rather than marking.'],
+             ['03','Right approach, with mistakes','The thinking is sound and the execution slipped. Cheapest band in the set to fix.'],
+             ['04','Correct and clean','Works, and holds up on inputs the question author never wrote.']];
+  var bandsEl=document.getElementById('bands');
+  BANDS.forEach(function(b){
+    var el=document.createElement('div'); el.className='band'; el.tabIndex=0;
+    el.innerHTML='<span class="bn">'+b[0]+'</span><span class="t">'+b[1]+'</span>';
+    var t=el.querySelector('.t');
+    function on(){ t.textContent=b[2]; }
+    function off(){ t.textContent=b[1]; }
+    el.addEventListener('mouseenter',on); el.addEventListener('mouseleave',off);
+    el.addEventListener('focus',on); el.addEventListener('blur',off);
+    bandsEl.appendChild(el);
+  });
+})();
+</script>
+</body>
+</html>
