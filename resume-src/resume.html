@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Muzammil Ayaz Kabeer - Resume</title>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+@page{size:A4;margin:14mm 15mm 13mm}
+:root{
+  --ink:#0b1120;
+  --body:#2b3342;
+  --dim:#5b6475;
+  --accent:#B45309;      /* text-safe amber */
+  --signal:#F59E0B;      /* decorative amber, matches portfolio */
+  --rule:#e6e8ec;
+}
+*{box-sizing:border-box}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{
+  margin:0;color:var(--body);
+  font-family:"Public Sans",Helvetica,Arial,sans-serif;
+  font-size:9.6pt;line-height:1.42;
+  font-variant-ligatures:none;font-feature-settings:"liga" 0,"clig" 0;
+}
+a{color:inherit;text-decoration:none}
+
+/* ---- header ---- */
+header{padding-bottom:10pt;margin-bottom:4pt;border-bottom:2.2pt solid var(--signal)}
+h1{font-family:"Newsreader",Georgia,serif;font-weight:600;font-size:27pt;line-height:1;margin:0;color:var(--ink);letter-spacing:-.01em}
+.role{font-size:11.5pt;font-weight:600;color:var(--accent);margin:5pt 0 6pt;letter-spacing:.01em}
+.contact{font-size:9pt;color:var(--dim);margin:0}
+.contact span+span::before{content:"  |  ";white-space:pre;color:#c4c9d2}
+
+/* ---- sections ---- */
+section{margin-top:11pt}
+h2{
+  font-family:"Public Sans",Helvetica,Arial,sans-serif;
+  font-size:10pt;font-weight:700;letter-spacing:0;text-transform:uppercase;
+  color:var(--ink);margin:0 0 6pt;display:flex;align-items:center;gap:7pt;
+}
+h2::before{content:"";width:7pt;height:7pt;background:var(--signal);border-radius:1.5pt;flex:none}
+h2::after{content:"";flex:1;height:.6pt;background:var(--rule)}
+p{margin:0}
+.summary{font-size:9.9pt;color:var(--body)}
+
+/* ---- skills ---- */
+.skills{margin:0;padding:0;list-style:none;display:grid;gap:2.6pt}
+.skills li{padding-left:0}
+.skills b{color:var(--ink);font-weight:600}
+
+/* ---- experience ---- */
+.job{margin-top:9pt}
+.job:first-of-type{margin-top:0}
+.job-head{display:flex;justify-content:space-between;align-items:baseline;gap:10pt}
+h3{font-size:10.8pt;font-weight:700;color:var(--ink);margin:0}
+h3 .org{color:var(--accent)}
+.meta{font-size:8.8pt;color:var(--dim);white-space:nowrap}
+h4{
+  font-size:9.3pt;font-weight:600;color:var(--ink);margin:6pt 0 2.5pt;
+  padding-left:7pt;border-left:2pt solid var(--signal);line-height:1.25;
+}
+h4 i{font-weight:400;color:var(--dim)}
+ul.b{margin:0;padding-left:13pt}
+ul.b li{margin:0 0 2.4pt;padding-left:1pt}
+ul.b li::marker{color:var(--signal)}
+.job-head,h4,ul.b li,.edu-row{break-inside:avoid}
+h2,h4,.job-head{break-after:avoid}
+
+.edu-row{display:flex;justify-content:space-between;gap:10pt;align-items:baseline}
+.edu-row b{color:var(--ink)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:4pt 20pt}
+.two b{color:var(--ink);font-weight:600}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Muzammil Ayaz Kabeer</h1>
+  <p class="role">Full Stack &amp; Applied AI Engineer</p>
+  <p class="contact"><span>Chennai, India</span><span><a href="mailto:muzammilayazz@gmail.com">muzammilayazz@gmail.com</a></span><span>+91 9080940003</span></p>
+  <p class="contact" style="margin-top:2pt"><span><a href="https://www.linkedin.com/in/muzammil-ayaz-kabeer/">linkedin.com/in/muzammil-ayaz-kabeer</a></span><span><a href="https://muzammilayaz.github.io/portfolio/">muzammilayaz.github.io/portfolio</a></span></p>
+</header>
+
+<section>
+  <h2>Summary</h2>
+  <p class="summary">Full stack and applied AI engineer with 6+ years of experience building production AI systems and backend services. I work on LLM agent orchestration, RAG pipelines, adaptive assessment engines, and the infrastructure that runs them. Most of my recent work has been 0 to 1: taking a rough product idea to something that serves real users daily.</p>
+</section>
+
+<section>
+  <h2>Skills</h2>
+  <ul class="skills">
+    <li><b>Languages:</b> Python, JavaScript, TypeScript, SQL, C++ (via node-addon-api)</li>
+    <li><b>AI &amp; LLM:</b> LangGraph, AutoGen/AG2, RAG pipelines, vector search, OpenAI embeddings, pgvector, prompt engineering (DSPy), structured LLM outputs, deepeval, LangFuse, Phoenix</li>
+    <li><b>Backend:</b> FastAPI, Node.js, Express.js, REST APIs, WebSockets, Celery, TaskIQ, Redis, RabbitMQ, Gunicorn, Uvicorn</li>
+    <li><b>Frontend:</b> React (Hooks, Redux), HTML/CSS, Streamlit, Electron</li>
+    <li><b>Databases:</b> PostgreSQL, MySQL, MongoDB, Redis, pgvector</li>
+    <li><b>AWS:</b> ECS, Fargate, EC2, ALB, ECR, S3, RDS, Secrets Manager, IAM, CloudWatch, VPC</li>
+    <li><b>Azure &amp; Cloud:</b> Azure OpenAI (model deployments, quota and region management), Azure AI Foundry, Azure AI Speech, Azure VMs, Cloudflare (AI Gateway, Workers, Pages), AssemblyAI</li>
+    <li><b>DevOps:</b> Docker, Terraform, GitHub Actions, CI/CD, SigNoz, OpenTelemetry, Linux, systemd, cron</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Experience</h2>
+
+  <div class="job">
+    <div class="job-head">
+      <h3>Senior Software Engineer, AI <span class="org">| iamneo</span></h3>
+      <span class="meta">May 2024 - Present | Chennai, India</span>
+    </div>
+
+    <h4>LSRW <i>- AI language assessment lab (CEFR A1-C2, IELTS-aligned)</i></h4>
+    <ul class="b">
+      <li>Built the autopilot engine that decides what each student practices next. A day-one diagnostic places them on the CEFR ladder, then two loops run independently: session length escalates after consecutive strong sessions and drops back on regression, while level promotion needs consistency across a rolling 5-7 session window. All four skills must clear threshold separately, so a strong reader cannot carry a weak speaker.</li>
+      <li>Solved semantic repetition in the question generator with an approach I call Negative RAG. Accepted questions are embedded and stored; new candidates get rejected on cosine similarity, and rejected ideas go back into the prompt as negative context through a LangGraph retry edge. Three rejections in a row trigger a saturation check and a topic pivot. No student sees the same question twice.</li>
+      <li>Wrote the bundling algorithm that assembles 24-question IELTS bundles (12 reading, 10 listening, 1 writing task, 1 speaking cue card) at a single CEFR level, with LCG-based distribution for non-repeating delivery. Kept content generation and autopilot selection fully separate.</li>
+      <li>Built the speech and scoring pipeline: Azure AI Speech TTS with CEFR-tiered speech rate control, AssemblyAI transcription, and tiered evaluation from rule-based keys through BERT similarity to LLM rubric grading.</li>
+      <li>Deployed on AWS ECS/Fargate behind an ALB with Terraform, PostgreSQL on RDS, Secrets Manager, and FastAPI plus TaskIQ workers. Serves hundreds of student sessions daily.</li>
+    </ul>
+
+    <h4>NeoEval <i>- automated code grading and academic integrity</i></h4>
+    <ul class="b">
+      <li>Built a persona classifier that sorts each code submission into one of four bands: non-attempt, wrong approach, right approach with mistakes, or correct and clean. Test-case pass/fail says whether code works; this says how the student got there.</li>
+      <li>Designed the LLM output schema behind it (is_genuine_attempt, approach, execution, why, confidence) plus the composite-to-band scoring. Every classification is auditable, and low-confidence cases route to human review instead of publishing automatically.</li>
+      <li>Set up the evaluation harness with deepeval and generated a synthetic C++ dataset with deliberate persona-subtype variation, which caught misclassification on ambiguous submissions before rollout. Later extended the model to SQL and JDBC questions with repair-effort scoring.</li>
+      <li>Designed an integrity score on top of keystroke telemetry, turning typing dynamics into features for gradient-boosted models (LightGBM, XGBoost) that flag sessions as original, copied, or malpractice.</li>
+    </ul>
+
+    <h4>AI Copilot and platform services</h4>
+    <ul class="b">
+      <li>Built an agent-orchestrated AI Copilot with intent-based routing across specialist agents (explainer, summarizer, technical expert) and a separate sub-graph for test-case validation and debugging. Shipped beginner and expert modes using Socratic prompting.</li>
+      <li>Built a token-metered AI usage system with wallet management, real-time deduction, and role-based access control, so AI consumption stays fair and auditable across thousands of exam sessions.</li>
+      <li>Developed async AI backend services on FastAPI, Celery, Redis, and Docker, with GitHub Actions pipelines for zero-downtime deploys.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-head">
+      <h3>Full Stack Developer <span class="org">| VisAI Labs</span></h3>
+      <span class="meta">May 2021 - Apr 2024 | Chennai, India</span>
+    </div>
+    <ul class="b" style="margin-top:4pt">
+      <li>Built a Linux desktop application in Electron, React, and Node.js for high-precision 3D object dimensioning, deployed across multiple manufacturing sites.</li>
+      <li>Integrated C++ measurement modules into Node.js through node-addon-api for sub-millisecond hardware communication and real-time data capture.</li>
+      <li>Designed Docker-based microservices for edge devices, covering automated backups and over-the-air software updates to industrial machines.</li>
+      <li>Built RabbitMQ pipelines moving measurement data from distributed machines to central reporting, cutting data lag by roughly 60%.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-head">
+      <h3>Programmer Analyst Trainee <span class="org">| Cognizant</span></h3>
+      <span class="meta">Aug 2020 - Apr 2021 | Chennai, India</span>
+    </div>
+    <ul class="b" style="margin-top:4pt">
+      <li>Worked on enterprise database-driven applications and picked up the fundamentals of large-scale architecture, team development workflow, and production code standards.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>Education</h2>
+  <div class="edu-row">
+    <span><b>B.Tech, Mechatronics Engineering</b> | SRM Institute of Science and Technology | 79%</span>
+    <span class="meta">2020</span>
+  </div>
+</section>
+
+<section>
+  <h2>Additional</h2>
+  <div class="two">
+    <span><b>Languages:</b> English, Tamil, Hindi, Urdu</span>
+    <span><b>Interests:</b> Chess, anime, cooking, travel</span>
+  </div>
+</section>
+
+</body>
+</html>

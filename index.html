@@ -213,7 +213,7 @@ button:hover{background:var(--signal);color:var(--ink)}
         <h3>Persona Classification</h3>
         <p>Submissions sort into four auditable bands. The classifier returns a strict schema rather than prose, covering approach, execution and confidence, so any judgement can be inspected and argued with. Low-confidence cases route to a human instead of publishing quietly.</p>
         <p>Evaluated with deepeval against a synthetic C++ dataset built with deliberate persona-subtype variation, to find where the band boundaries blur before real students did. Later extended to SQL and JDBC with repair-effort scoring.</p>
-        <p>Phase two moves upstream of the code entirely: typing dynamics out of ClickHouse become features for gradient-boosted models that separate original work from copied. Behaviour is considerably harder to fake than a final answer.</p>
+        <p>Phase two moves upstream of the code entirely: typing dynamics become features for gradient-boosted models that separate original work from copied. Behaviour is considerably harder to fake than a final answer.</p>
       </div>
       <div class="panel">
         <div class="phead"><span>Hover or tab through the bands</span></div>
@@ -247,7 +247,7 @@ button:hover{background:var(--signal);color:var(--ink)}
       </div>
       <div class="metric-card">
         <h4>Data &amp; Infrastructure</h4>
-        <p>AWS (ECS, Fargate, ALB), Terraform, Aurora PostgreSQL, pgvector, ClickHouse, Docker</p>
+        <p>AWS (ECS, Fargate, ALB), Terraform, PostgreSQL, pgvector, Docker</p>
       </div>
       <div class="metric-card">
         <h4>Evaluation &amp; ML</h4>
@@ -259,7 +259,7 @@ button:hover{background:var(--signal);color:var(--ink)}
       <div class="timeline-item">
         <p class="timeline-date">2024 &ndash; Present</p>
         <h3>Senior Software Engineer, AI @ iamneo</h3>
-        <p>LSRW and NeoEval, above. Also an agent-orchestrated AI Copilot with intent-based routing across specialist agents, and a token-metered usage system with wallet management, real-time deduction and role-based access across thousands of exam sessions. The Copilot ships in beginner and expert modes, with Socratic prompting for beginners. Runs on AWS ECS/Fargate behind an ALB, provisioned with Terraform, with Aurora PostgreSQL Serverless v2 and TaskIQ workers.</p>
+        <p>LSRW and NeoEval, above. Also an agent-orchestrated AI Copilot with intent-based routing across specialist agents, and a token-metered usage system with wallet management, real-time deduction and role-based access across thousands of exam sessions. The Copilot ships in beginner and expert modes, with Socratic prompting for beginners. Runs on AWS ECS/Fargate behind an ALB, provisioned with Terraform, with PostgreSQL on RDS and TaskIQ workers.</p>
       </div>
       <div class="timeline-item">
         <p class="timeline-date">2021 &ndash; 2024</p>
