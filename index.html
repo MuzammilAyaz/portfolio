@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Muzammil Ayaz Kabeer — Applied AI Engineer</title>
-<meta name="description" content="Applied AI engineer in Chennai. I build engines that decide: adaptive assessment ladders, LLM agent orchestration, and the infrastructure underneath.">
+<title>Muzammil Ayaz Kabeer — Full Stack &amp; Applied AI Engineer</title>
+<meta name="description" content="Full stack and applied AI engineer in Chennai. I build engines that decide: adaptive assessment ladders, LLM agent orchestration, and the infrastructure underneath.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
@@ -151,8 +151,9 @@ button:hover{background:var(--signal);color:var(--ink)}
   <!-- Hero -->
   <section class="section-block hero">
     <h1>Muzammil Ayaz Kabeer</h1>
-    <p class="hero-role">Applied AI Engineer based in Chennai</p>
+    <p class="hero-role">Full Stack &amp; Applied AI Engineer based in Chennai</p>
     <p class="hero-sub">I build engines that decide. What a student should practice next. Whether a generated question is actually new. How a piece of code was logically constructed.</p>
+    <p class="hero-sub" style="margin-top:1rem">Six years of shipping production AI systems and backend services, mostly 0 to 1: taking a rough product idea to something real users rely on every day.</p>
     <a href="#projects" class="hero-cta">Explore My Work &darr;</a>
   </section>
 
@@ -187,6 +188,17 @@ button:hover{background:var(--signal);color:var(--ink)}
         <h3>2. &ldquo;Negative RAG&rdquo;</h3>
         <p>An LLM with no record of what it has already produced starts circling: different words, same ideas. Every output stays technically valid, which is why a basic uniqueness check never catches it. That is not a prompting problem, it is a missing memory layer.</p>
         <p>So every accepted question is embedded and stored, and each new candidate is checked against the whole history. Anything at or above cosine 0.85 is rejected and pushed into LangGraph state as negative context for the next attempt. Three consecutive rejections trigger a density check, and a saturated topic gets abandoned outright.</p>
+      </div>
+    </div>
+
+    <div class="project-grid" style="margin-top:clamp(3rem,7vw,5rem)">
+      <div class="col">
+        <h3>3. IELTS Bundling</h3>
+        <p>Practice arrives as 24-question IELTS bundles pinned to a single CEFR level: 12 reading, 10 listening, one writing task and one speaking cue card. An LCG-based distribution keeps delivery non-repeating without storing a per-student shuffle. Content generation and autopilot selection stay fully separate, so either can change without breaking the other.</p>
+      </div>
+      <div class="col">
+        <h3>4. Speech &amp; Scoring</h3>
+        <p>Listening audio comes from Azure AI Speech, with speech rate tiered by CEFR level. Spoken answers are transcribed by AssemblyAI. Scoring escalates only as far as it needs to: rule-based keys first, BERT similarity next, and LLM rubric grading for what is left.</p>
       </div>
     </div>
   </section>
@@ -235,7 +247,7 @@ button:hover{background:var(--signal);color:var(--ink)}
       </div>
       <div class="metric-card">
         <h4>Data &amp; Infrastructure</h4>
-        <p>AWS (ECS, Fargate, ALB), Aurora PostgreSQL, pgvector, ClickHouse, Docker</p>
+        <p>AWS (ECS, Fargate, ALB), Terraform, Aurora PostgreSQL, pgvector, ClickHouse, Docker</p>
       </div>
       <div class="metric-card">
         <h4>Evaluation &amp; ML</h4>
@@ -247,12 +259,12 @@ button:hover{background:var(--signal);color:var(--ink)}
       <div class="timeline-item">
         <p class="timeline-date">2024 &ndash; Present</p>
         <h3>Senior Software Engineer, AI @ iamneo</h3>
-        <p>LSRW and NeoEval, above. Also an agent-orchestrated AI Copilot with intent-based routing across specialist agents, and a token-metered usage system with wallet management and real-time deduction across thousands of exam sessions. Runs on AWS ECS/Fargate behind an ALB, with Aurora PostgreSQL Serverless v2 and TaskIQ workers.</p>
+        <p>LSRW and NeoEval, above. Also an agent-orchestrated AI Copilot with intent-based routing across specialist agents, and a token-metered usage system with wallet management, real-time deduction and role-based access across thousands of exam sessions. The Copilot ships in beginner and expert modes, with Socratic prompting for beginners. Runs on AWS ECS/Fargate behind an ALB, provisioned with Terraform, with Aurora PostgreSQL Serverless v2 and TaskIQ workers.</p>
       </div>
       <div class="timeline-item">
         <p class="timeline-date">2021 &ndash; 2024</p>
         <h3>Full Stack Developer @ VisAI Labs</h3>
-        <p>An Electron and Node.js desktop application for high-precision 3D object dimensioning, deployed across manufacturing sites. Bridged C++ measurement modules into Node through node-addon-api for sub-millisecond hardware communication, and moved measurement data off distributed machines over RabbitMQ.</p>
+        <p>An Electron and Node.js desktop application for high-precision 3D object dimensioning, deployed across manufacturing sites. Bridged C++ measurement modules into Node through node-addon-api for sub-millisecond hardware communication, and moved measurement data off distributed machines over RabbitMQ, cutting reporting lag by roughly 60%. Docker-based microservices on the edge devices handled automated backups and over-the-air updates to the machines.</p>
       </div>
       <div class="timeline-item">
         <p class="timeline-date">2020 &ndash; 2021</p>
@@ -273,8 +285,8 @@ button:hover{background:var(--signal);color:var(--ink)}
     <p>Happy to discuss assessment engines, agent orchestration, or why your generator keeps repeating itself.</p>
     <div class="contact-row">
       <a href="mailto:muzammilayazz@gmail.com" class="hero-cta" style="margin-top:0">Email Me</a>
-      <a href="https://www.linkedin.com/in/muzammilayaz" target="_blank" rel="noopener" class="plain">LinkedIn</a>
-      <a href="resume.pdf" target="_blank" rel="noopener" class="plain">Download Resume (PDF)</a>
+      <a href="https://www.linkedin.com/in/muzammil-ayaz-kabeer/" target="_blank" rel="noopener" class="plain">LinkedIn</a>
+      <a href="resume.pdf" download="Muzammil_Ayaz_Kabeer_Resume.pdf" class="plain">Download Resume (PDF)</a>
     </div>
   </section>
 
